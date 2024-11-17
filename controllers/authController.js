@@ -19,3 +19,13 @@ export const login = async (req, res) => {
     const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET, { expiresIn: '1h' });
     res.json({ token });
 };
+
+export const getAllUsers = async (req, res) => {
+    try {
+        const users = await User.find({}, '-password');
+        res.json(users);
+    } catch (error) {
+        console.error("Error fetching users:", error);
+        res.status(500).json({ error: 'An error occurred while fetching users.' });
+    }
+};

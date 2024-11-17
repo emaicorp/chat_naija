@@ -1,10 +1,12 @@
 import { OpenAI } from 'openai';
 import ChatHistory from '../models/ChatHistory.js';
 
-const openai = new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
+const openai = new OpenAI({ 
+    apiKey: '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',
+    baseURL: 'https://integrate.api.nvidia.com/v1', });
 
 export const sendMessage = async (req, res) => {
-    const { userId, message, context } = req.body;
+    const { userId, message, context = [] } = req.body;
 
     try {
         const completion = await openai.chat.completions.create({
