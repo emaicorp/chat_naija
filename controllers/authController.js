@@ -2,8 +2,19 @@ import User from '../models/User.js';
 import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
 
+// Password validation regex
+const passwordValidationRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+
 export const register = async (req, res) => {
     const { username, password, email } = req.body;
+
+    // Validate password
+    if (!passwordValidationRegex.test(password)) {
+        return res.status(400).json({
+            error: 'Password must be at least 8 characters long, contain at least one uppercase letter, one lowercase letter, one number, and one special character.'
+        });
+    }
+
     const hashedPassword = await bcrypt.hash(password, 10);
     const user = new User({ username, password: hashedPassword, email });
     await user.save();

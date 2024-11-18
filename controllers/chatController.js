@@ -39,7 +39,7 @@ export const sendMessage = async (req, res) => {
 };
 
 export const getChatHistory = async (req, res) => {
-    const { userId } = req.params;
+    const { userId } = req.body;
     const history = await ChatHistory.findOne({ userId });
     res.json(history || { userId, history: [] });
 };

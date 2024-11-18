@@ -5,6 +5,6 @@ import { authenticateToken } from '../utils/authMiddleware.js';
 const router = express.Router();
 
 router.post('/message',authenticateToken, sendMessage);
-router.get('/history/:userId',authenticateToken, getChatHistory);
+router.get('/history',authenticateToken, getChatHistory);
 
 export default router;
