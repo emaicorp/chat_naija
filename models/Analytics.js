@@ -1,4 +1,4 @@
-import mongoose from 'mongoose';
+const mongoose = require('mongoose');
 
 const analyticsSchema = new mongoose.Schema({
     userId: { type: mongoose.Schema.Types.ObjectId, ref: 'User' },
@@ -7,4 +7,4 @@ const analyticsSchema = new mongoose.Schema({
 });
 
 const Analytics = mongoose.model('Analytics', analyticsSchema);
-export default Analytics;
+module.exports = Analytics;

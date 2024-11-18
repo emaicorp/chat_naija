@@ -1,10 +1,10 @@
-import express from 'express';
-import { sendMessage, getChatHistory } from '../controllers/chatController.js';
-import { authenticateToken } from '../utils/authMiddleware.js';
+const express = require ('express')
+const { sendMessage, getChatHistory } = require('../controllers/chatController.js');
+const { authenticateToken } = require('../utils/authMiddleware.js');
 
 const router = express.Router();
 
 router.post('/message',authenticateToken, sendMessage);
 router.get('/history',authenticateToken, getChatHistory);
 
-export default router;
+module.exports = router;

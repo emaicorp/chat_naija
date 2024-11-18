@@ -1,8 +1,8 @@
-import dotenv from 'dotenv';
-dotenv.config(); // Must be the first line in this file
+const dotenv = require('dotenv');
+dotenv.config(); // Load environment variables
 
-import { OpenAI } from 'openai';
-import ChatHistory from '../models/ChatHistory.js';
+const { OpenAI } = require('openai');
+const ChatHistory = require('../models/ChatHistory.js');
 
 // Ensure apiKey is loaded after dotenv config
 if (!process.env.OPENAI_API_KEY) {
@@ -12,7 +12,7 @@ const openai = new OpenAI({
     apiKey: process.env.OPENAI_API_KEY ,
     baseURL: 'https://integrate.api.nvidia.com/v1', });
 
-export const sendMessage = async (req, res) => {
+ const sendMessage = async (req, res) => {
     const { userId, message, context = [] } = req.body;
 
     try {
@@ -38,8 +38,10 @@ export const sendMessage = async (req, res) => {
     }
 };
 
-export const getChatHistory = async (req, res) => {
+ const getChatHistory = async (req, res) => {
     const { userId } = req.body;
     const history = await ChatHistory.findOne({ userId });
     res.json(history || { userId, history: [] });
 };
+
+module.exports = {sendMessage ,getChatHistory }

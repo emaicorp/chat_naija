@@ -1,4 +1,4 @@
-import mongoose from 'mongoose';
+const mongoose = require('mongoose');
 
 const chatHistorySchema = new mongoose.Schema({
     userId: { type: mongoose.Schema.Types.ObjectId, ref: 'User' },
@@ -12,4 +12,4 @@ const chatHistorySchema = new mongoose.Schema({
 });
 
 const ChatHistory = mongoose.model('ChatHistory', chatHistorySchema);
-export default ChatHistory;
+module.exports = ChatHistory;

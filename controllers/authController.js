@@ -1,11 +1,12 @@
-import User from '../models/User.js';
-import bcrypt from 'bcrypt';
-import jwt from 'jsonwebtoken';
+const User = require('../models/User.js');
+const bcrypt = require('bcrypt');
+const jwt = require('jsonwebtoken');
+
 
 // Password validation regex
 const passwordValidationRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
 
-export const register = async (req, res) => {
+ const register = async (req, res) => {
     const { username, password, email } = req.body;
 
     // Validate password
@@ -21,7 +22,7 @@ export const register = async (req, res) => {
     res.status(201).json({ message: 'User registered successfully' });
 };
 
-export const login = async (req, res) => {
+ const login = async (req, res) => {
     const { username, password } = req.body;
     const user = await User.findOne({ username });
     if (!user || !(await bcrypt.compare(password, user.password))) {
@@ -31,7 +32,7 @@ export const login = async (req, res) => {
     res.json({ token });
 };
 
-export const getAllUsers = async (req, res) => {
+ const getAllUsers = async (req, res) => {
     try {
         const users = await User.find({}, '-password');
         res.json(users);
@@ -40,3 +41,4 @@ export const getAllUsers = async (req, res) => {
         res.status(500).json({ error: 'An error occurred while fetching users.' });
     }
 };
+module.exports = {register ,login ,getAllUsers}

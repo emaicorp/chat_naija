@@ -1,14 +1,14 @@
-import dotenv from 'dotenv'; // Correct import
-dotenv.config();
-// require('dotenv').config()
-import express from 'express';
-import connectDB from './config/db.js';
-import authRoutes from './routes/authRoutes.js';
-import chatRoutes from './routes/chatRoutes.js';
-import modelRoutes from './routes/modelRoutes.js';
-import settingsRoutes from './routes/settingsRoutes.js';
-import analyticsRoutes from './routes/analyticsRoutes.js';
-import webhookRoutes from './routes/webhookroutes.js';
+const dotenv = require('dotenv');
+dotenv.config(); // Load environment variables
+
+const express = require('express');
+const connectDB = require('./config/db.js');
+const authRoutes = require('./routes/authRoutes.js');
+const chatRoutes = require('./routes/chatRoutes.js');
+const modelRoutes = require('./routes/modelRoutes.js');
+const settingsRoutes = require('./routes/settingsRoutes.js');
+const analyticsRoutes = require('./routes/analyticsRoutes.js');
+const webhookRoutes = require('./routes/webhookroutes.js');
 
 // Load .env file
 

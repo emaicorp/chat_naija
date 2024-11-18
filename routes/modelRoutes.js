@@ -1,9 +1,9 @@
-import express from 'express';
-import { getModelStatus, reloadModel } from '../controllers/modelController.js';
+const express = require ('express')
+const { getModelStatus, reloadModel } = require ('../controllers/modelController.js');
 
 const router = express.Router();
 
 router.get('/status', getModelStatus);
 router.post('/reload', reloadModel);
 
-export default router;
+module.exports = router;
