@@ -8,7 +8,7 @@ const chatRoutes = require('./routes/chatRoutes.js');
 const modelRoutes = require('./routes/modelRoutes.js');
 const settingsRoutes = require('./routes/settingsRoutes.js');
 const analyticsRoutes = require('./routes/analyticsRoutes.js');
-const webhookRoutes = require('./routes/webhookroutes.js');
+const webhookRoutes = require('./routes/webhookRoutes.js');
 
 // Load .env file
 
