@@ -1,8 +1,15 @@
+import dotenv from 'dotenv';
+dotenv.config(); // Must be the first line in this file
+
 import { OpenAI } from 'openai';
 import ChatHistory from '../models/ChatHistory.js';
 
+// Ensure apiKey is loaded after dotenv config
+if (!process.env.OPENAI_API_KEY) {
+    throw new Error('OPENAI_API_KEY is missing in the .env file');
+}
 const openai = new OpenAI({ 
-    apiKey: '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',
+    apiKey: process.env.OPENAI_API_KEY ,
     baseURL: 'https://integrate.api.nvidia.com/v1', });
 
 export const sendMessage = async (req, res) => {

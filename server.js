@@ -1,4 +1,6 @@
 import dotenv from 'dotenv'; // Correct import
+dotenv.config();
+// require('dotenv').config()
 import express from 'express';
 import connectDB from './config/db.js';
 import authRoutes from './routes/authRoutes.js';
@@ -9,7 +11,6 @@ import analyticsRoutes from './routes/analyticsRoutes.js';
 import webhookRoutes from './routes/webhookroutes.js';
 
 // Load .env file
-dotenv.config();
 
 // Test API key
 if (!process.env.OPENAI_API_KEY) {
