@@ -1,5 +1,6 @@
 const dotenv = require('dotenv');
 dotenv.config(); // Load environment variables
+const cors = require('cors')
 
 const express = require('express');
 const connectDB = require('./config/db.js');
@@ -24,6 +25,12 @@ connectDB();
 // Initialize Express app
 const app = express();
 const port = process.env.PORT || 3000;
+app.use(cors({
+    origin: '*', // Allow all origins
+    methods: ['GET', 'POST', 'PUT', 'DELETE'], // Allowed methods
+    credentials: false // Set to false because credentials cannot be sent with '*' as origin
+}));
+
 
 app.use(express.json());
 
