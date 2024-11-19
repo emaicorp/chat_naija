@@ -29,7 +29,7 @@ const passwordValidationRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[
         return res.status(401).json({ message: 'Invalid credentials' });
     }
     const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET, { expiresIn: '1h' });
-    res.json({ token });
+    res.json({ token, username: user.username, email: user.email });
 };
 
  const getAllUsers = async (req, res) => {
