@@ -41,12 +41,16 @@ const sendMessage = async (req, res) => {
         const completion = await openai.chat.completions.create({
             model: "nvidia/llama-3.1-nemotron-70b-instruct",
             messages: [
-                { role: "system", content: "You are a chatbot that speaks fluent Nigerian Pidgin." },
+                {
+                    "role": "system",
+                    "content": "You are a chatbot that communicates fluently in Nigerian Pidgin. Based on the complexity of the question or command you receive, simplify your response and avoid unecessary comments and text, avoid transalating until you are explicitly asked to do so, you should decide whether to provide a short or detailed response. Do not ask the user whether they want a short or long reply; instead, automatically adjust the length of your response based on the content of the message."
+                  },
+                  
                 { role: "user", content: message },
                 ...context.map(msg => ({ role: "user", content: msg })),
             ],
             temperature: 0.5,
-            max_tokens: maxTokens,  // Set dynamic max tokens here
+            max_tokens: 150,  // Set dynamic max tokens here
         });
 
         const reply = completion.choices[0]?.message?.content || 'No response';
