@@ -1,0 +1,220 @@
+{
+    "info": {
+      "name": "ChatNaija API Documentation",
+      "description": "Comprehensive API documentation for the ChatNaija project, covering authentication, chat, model management, settings, analytics, and webhook endpoints.",
+      "version": "1.0.0"
+    },
+    "item": [
+      {
+        "name": "Authentication",
+        "item": [
+          {
+            "name": "Register User",
+            "request": {
+              "method": "POST",
+              "header": [],
+              "body": {
+                "mode": "raw",
+                "raw": "{\n    \"username\": \"user123\",\n    \"password\": \"Password1!\",\n    \"email\": \"user@example.com\"\n}"
+              },
+              "url": {
+                "raw": "http://localhost:3000/auth/register",
+                "host": ["http://localhost:3000"],
+                "path": ["auth", "register"]
+              }
+            },
+            "response": []
+          },
+          {
+            "name": "Login User",
+            "request": {
+              "method": "POST",
+              "header": [],
+              "body": {
+                "mode": "raw",
+                "raw": "{\n    \"username\": \"user123\",\n    \"password\": \"Password1!\"\n}"
+              },
+              "url": {
+                "raw": "http://localhost:3000/auth/login",
+                "host": ["http://localhost:3000"],
+                "path": ["auth", "login"]
+              }
+            },
+            "response": []
+          },
+          {
+            "name": "Get All Users",
+            "request": {
+              "method": "GET",
+              "header": [],
+              "url": {
+                "raw": "http://localhost:3000/auth/users",
+                "host": ["http://localhost:3000"],
+                "path": ["auth", "users"]
+              }
+            },
+            "response": []
+          }
+        ]
+      },
+      {
+        "name": "Chat",
+        "item": [
+          {
+            "name": "Send Message",
+            "request": {
+              "method": "POST",
+              "header": [],
+              "body": {
+                "mode": "raw",
+                "raw": "{\n    \"userId\": \"12345\",\n    \"message\": \"How you dey?\",\n    \"context\": [\"Previous message 1\", \"Previous message 2\"]\n}"
+              },
+              "url": {
+                "raw": "http://localhost:3000/chat/message",
+                "host": ["http://localhost:3000"],
+                "path": ["chat", "message"]
+              }
+            },
+            "response": []
+          },
+          {
+            "name": "Get Chat History",
+            "request": {
+              "method": "GET",
+              "header": [],
+              "url": {
+                "raw": "http://localhost:3000/chat/history/:userId",
+                "host": ["http://localhost:3000"],
+                "path": ["chat", "history", ":userId"]
+              }
+            },
+            "response": []
+          }
+        ]
+      },
+      {
+        "name": "Model Management",
+        "item": [
+          {
+            "name": "Get Model Status",
+            "request": {
+              "method": "GET",
+              "header": [],
+              "url": {
+                "raw": "http://localhost:3000/model/status",
+                "host": ["http://localhost:3000"],
+                "path": ["model", "status"]
+              }
+            },
+            "response": []
+          },
+          {
+            "name": "Reload Model",
+            "request": {
+              "method": "POST",
+              "header": [],
+              "body": {
+                "mode": "raw",
+                "raw": "{\n    \"parameters\": {\n        \"temperature\": 0.7,\n        \"max_tokens\": 100\n    }\n}"
+              },
+              "url": {
+                "raw": "http://localhost:3000/model/reload",
+                "host": ["http://localhost:3000"],
+                "path": ["model", "reload"]
+              }
+            },
+            "response": []
+          }
+        ]
+      },
+      {
+        "name": "Settings",
+        "item": [
+          {
+            "name": "Update Chatbot Settings",
+            "request": {
+              "method": "POST",
+              "header": [],
+              "body": {
+                "mode": "raw",
+                "raw": "{\n    \"personality\": \"Pidgin English\",\n    \"humor_level\": 5\n}"
+              },
+              "url": {
+                "raw": "http://localhost:3000/settings",
+                "host": ["http://localhost:3000"],
+                "path": ["settings"]
+              }
+            },
+            "response": []
+          }
+        ]
+      },
+      {
+        "name": "Analytics",
+        "item": [
+          {
+            "name": "Get Usage Analytics",
+            "request": {
+              "method": "GET",
+              "header": [],
+              "url": {
+                "raw": "http://localhost:3000/analytics/usage",
+                "host": ["http://localhost:3000"],
+                "path": ["analytics", "usage"]
+              }
+            },
+            "response": []
+          },
+          {
+            "name": "Get User Analytics",
+            "request": {
+              "method": "GET",
+              "header": [],
+              "url": {
+                "raw": "http://localhost:3000/analytics/user/:userId",
+                "host": ["http://localhost:3000"],
+                "path": ["analytics", "user", ":userId"]
+              }
+            },
+            "response": []
+          }
+        ]
+      },
+      {
+        "name": "Webhook",
+        "item": [
+          {
+            "name": "Register Webhook",
+            "request": {
+              "method": "POST",
+              "header": [],
+              "body": {
+                "mode": "raw",
+                "raw": "{\n    \"url\": \"https://myapp.com/webhook\",\n    \"events\": [\"message_sent\", \"user_joined\"]\n}"
+              },
+              "url": {
+                "raw": "http://localhost:3000/webhook/register",
+                "host": ["http://localhost:3000"],
+                "path": ["webhook", "register"]
+              }
+            },
+            "response": []
+          },
+          {
+            "name": "Test Webhook",
+            "request": {
+              "method": "POST",
+              "header": [],
+              "url": {
+                "raw": "http://localhost:3000/webhook/test",
+                "host": ["http://localhost:3000"],
+                "path": ["webhook", "test"]
+              }
+            },
+            "response": []
+          }
+        ]
+      }
+    ]
+  }
+  

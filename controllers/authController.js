@@ -12,7 +12,7 @@ const passwordValidationRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[
     // Validate password
     if (!passwordValidationRegex.test(password)) {
         return res.status(400).json({
-            error: 'Password must be at least 8 characters long, contain at least one uppercase letter, one lowercase letter, one number, and one special character.'
+            error: `Password must be at least 8 characters long, contain at least one uppercase letter, one lowercase letter, one number, and one special character. ${password} `
         });
     }
 
@@ -23,8 +23,8 @@ const passwordValidationRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[
 };
 
  const login = async (req, res) => {
-    const { username, password } = req.body;
-    const user = await User.findOne({ username });
+    const { email, password } = req.body;
+    const user = await User.findOne({ email });
     if (!user || !(await bcrypt.compare(password, user.password))) {
         return res.status(401).json({ message: 'Invalid credentials' });
     }
