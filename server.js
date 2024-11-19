@@ -25,9 +25,9 @@ connectDB();
 // Initialize Express app
 const app = express();
 app.use(cors({
-    origin: 'http://localhost:5173', // Allow all origins
+    origin: '*', // Allow all origins
     methods: ['GET', 'POST', 'PUT', 'DELETE'], // Allowed methods
-    credentials: true // Set to false because credentials cannot be sent with '*' as origin
+    credentials: false // Set to false because credentials cannot be sent with '*' as origin
 }));
 const port = process.env.PORT || 3000;
 

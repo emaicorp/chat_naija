@@ -18,8 +18,14 @@ const passwordValidationRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[
 
     const hashedPassword = await bcrypt.hash(password, 10);
     const user = new User({ username, password: hashedPassword, email });
-    await user.save();
-    res.status(201).json({ message: 'User registered successfully' });
+
+    try {
+        await user.save();
+        res.status(201).json({ message: 'User registered successfully' });
+    } catch (error) {
+        // Handle error if user already exists or other database errors
+        res.status(400).json({ error: 'User already exists or error saving user' });
+    }
 };
 
  const login = async (req, res) => {
