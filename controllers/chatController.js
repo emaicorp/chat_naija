@@ -32,7 +32,7 @@ const getResponseLength = (message) => {
 };
 
 const sendMessage = async (req, res) => {
-    const { userId, message, context = [] } = req.body;
+    const { userId, message, language, context = [] } = req.body;
 
     try {
         // Adjust max_tokens based on the user's message complexity
@@ -43,7 +43,7 @@ const sendMessage = async (req, res) => {
             messages: [
                 {
                     "role": "system",
-                    "content": "You are a chatbot that communicates fluently in Nigerian Pidgin. Based on the complexity of the question or command you receive, simplify your response and avoid unecessary comments and text, avoid transalating until you are explicitly asked to do so, you should decide whether to provide a short or detailed response. Do not ask the user whether they want a short or long reply; instead, automatically adjust the length of your response based on the content of the message."
+                    "content": `You are a chatbot that communicates fluently in Nigerian ${language}. Based on the complexity of the question or command you receive, simplify your response and avoid unecessary comments and text, avoid transalating until you are explicitly asked to do so, you should decide whether to provide a short or detailed response. Do not ask the user whether they want a short or long reply; instead, automatically adjust the length of your response based on the content of the message.`
                   },
                   
                 { role: "user", content: message },
